@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NSI — Narrative Strength Index for Crypto</title>
+<meta name="description" content="A quantitative index that ranks crypto narratives by market-cap momentum, liquidity, mindshare, developer activity, and capital flows. Refreshed live from CoinGecko." />
+<meta property="og:title" content="NSI — Narrative Strength Index for Crypto" />
+<meta property="og:description" content="A quantitative index that ranks the strength of crypto narratives in real time." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://api.coingecko.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="#top">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M9 22 L9 10 L23 22 L23 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>NSI</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#ranking">Ranking</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#narratives">Narratives</a>
+      <a href="#about">About</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="sun">☀</span><span class="moon">◐</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Narrative Strength Index · v1.0</p>
+    <h1>Which crypto narrative is actually working today?</h1>
+    <p class="lede">
+      NSI compresses five quantifiable signals — price momentum, liquidity, social mindshare,
+      developer activity, and capital flows — into a single 0–100 score per narrative.
+      Snapshot updated regularly from CoinGecko; click <em>Refresh</em> to pull live.
+    </p>
+    <div class="hero-meta">
+      <span id="lastUpdated" class="badge">Loading live data…</span>
+      <span class="badge subtle">Universe: 10 narratives</span>
+      <button id="refreshBtn" class="btn-ghost" type="button">↻ Refresh</button>
+    </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section id="ranking" class="section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Live Ranking</h2>
+      <p>Click a row to expand the per-narrative breakdown.</p>
+    </header>
+
+    <div id="loadingState" class="loading-state">
+      <div class="spinner"></div>
+      <p>Fetching live category data from CoinGecko…</p>
+    </div>
+
+    <div id="errorState" class="error-state hidden">
+      <strong>Couldn't reach CoinGecko.</strong>
+      <p>Showing the most recent cached snapshot from <span id="cachedDate"></span>.</p>
+    </div>
+
+    <div id="rankingTable" class="ranking-table hidden">
+      <div class="ranking-head">
+        <div class="col-rank">#</div>
+        <div class="col-name">Narrative</div>
+        <div class="col-mcap">Mcap</div>
+        <div class="col-7d">7d %</div>
+        <div class="col-sub">MCM</div>
+        <div class="col-sub">VLA</div>
+        <div class="col-sub">SMS</div>
+        <div class="col-sub">DEV</div>
+        <div class="col-sub">CFI</div>
+        <div class="col-nsi">NSI</div>
+        <div class="col-signal">Signal</div>
+      </div>
+      <div id="rankingBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology" class="section section-alt">
+  <div class="container">
+    <header class="section-header">
+      <h2>Methodology</h2>
+      <p>NSI is a relative-momentum index built from five normalized sub-indicators.</p>
+    </header>
+
+    <div class="formula">
+      <code>NSI = 0.25·MCM + 0.20·VLA + 0.20·SMS + 0.15·DEV + 0.20·CFI</code>
+    </div>
+
+    <div class="method-grid">
+      <article class="method-card">
+        <span class="method-tag">MCM · 25%</span>
+        <h3>Market-Cap Momentum</h3>
+        <p>Cap-weighted 7-day return across the top constituents of each narrative. Live from CoinGecko's per-category markets endpoint.</p>
+      </article>
+      <article class="method-card">
+        <span class="method-tag">VLA · 20%</span>
+        <h3>Volume / Liquidity Acceleration</h3>
+        <p>24h aggregate volume ÷ market cap. A turnover spike usually precedes trend confirmation.</p>
+      </article>
+      <article class="method-card">
+        <span class="method-tag">SMS · 20%</span>
+        <h3>Social Mindshare Shift</h3>
+        <p>Δ share-of-voice on Kaito + LunarCrush, 7d vs 30d. Tiered values in this build; pluggable API in roadmap.</p>
+      </article>
+      <article class="method-card">
+        <span class="method-tag">DEV · 15%</span>
+        <h3>Developer Activity</h3>
+        <p>Active devs and commits via Electric Capital / Artemis. Tiered (high/med/low) — slow-moving signal.</p>
+      </article>
+      <article class="method-card">
+        <span class="method-tag">CFI · 20%</span>
+        <h3>Capital Inflows</h3>
+        <p>ETF + stablecoin + bridge net inflows over 14 days. The "stickiness" check — real money on rails.</p>
+      </article>
+      <article class="method-card method-card-final">
+        <span class="method-tag">Normalization</span>
+        <h3>0–100 min-max within the universe</h3>
+        <p>Each sub-indicator is rescaled relative to the 10-narrative universe. NSI ≥ 65 = Accumulate, 45–65 = Hold/Watch, &lt; 45 = Fade.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NARRATIVES -->
+<section id="narratives" class="section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Narrative Universe</h2>
+      <p>The 10 actively-tracked themes. Click any name in the ranking above to see its detail.</p>
+    </header>
+    <div id="narrativeGrid" class="narrative-grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section section-alt">
+  <div class="container narrow">
+    <header class="section-header">
+      <h2>About this index</h2>
+    </header>
+    <p>
+      The Narrative Strength Index is a research output of the CryptoStrategy project. It is intended for
+      research and education only — it is not investment advice. Live data is sourced from
+      <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Mindshare,
+      developer activity, and flow tiers are currently set heuristically; a roadmap item is to wire them
+      to Kaito, Electric Capital, and DefiLlama / Farside respectively.
+    </p>
+    <p>
+      Open source · <a href="https://github.com/maxcodjo" target="_blank" rel="noopener">github.com/maxcodjo</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Narrative Strength Index. Educational use only — not investment advice.</p>
+  </div>
+</footer>
+
+<!-- Narrative detail dialog -->
+<dialog id="detailDialog" class="detail-dialog">
+  <div class="dialog-inner">
+    <button class="dialog-close" data-close>✕</button>
+    <div id="detailContent"></div>
+  </div>
+</dialog>
+
+<script src="js/narratives.js"></script>
+<script src="js/nsi.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
