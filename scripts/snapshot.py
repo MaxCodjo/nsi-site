@@ -27,6 +27,17 @@ NARRATIVES = [
     ("liquid-staking",      ["liquid-staking", "restaking"]),
     ("layer-2",             ["layer-2"]),
     ("memecoins",           ["meme-token"]),
+    ("gaming",              ["gaming"]),
+    ("socialfi",            ["socialfi"]),
+    ("nft",                 ["non-fungible-tokens-nft"]),
+    ("zk",                  ["zero-knowledge-zk"]),
+    ("modular",             ["modular-blockchain", "data-availability"]),
+    ("bitcoin-ecosystem",   ["bitcoin-ecosystem"]),
+    ("oracle",              ["oracle"]),
+    ("privacy",             ["privacy-coins"]),
+    ("dex-perps",           ["decentralized-exchange"]),
+    ("cex-tokens",          ["centralized-exchange-token-cex"]),
+    ("tokenized-gold",      ["tokenized-gold"]),
 ]
 
 

@@ -21,7 +21,7 @@ NSI = 0.25·MCM + 0.20·VLA + 0.20·SMS + 0.15·DEV + 0.20·CFI
 | DEV | Developer Activity | Tiered — pluggable to Electric Capital / Artemis |
 | CFI | Capital Inflows (ETF + stables + bridges, 14d) | Tiered — pluggable to DefiLlama / Farside |
 
-Each sub-indicator is min-max normalized within the 10-narrative universe, so NSI is a **relative** strength score, not absolute.
+Each sub-indicator is min-max normalized within the 21-narrative universe, so NSI is a **relative** strength score, not absolute.
 
 Signal buckets: **NSI ≥ 65 = Accumulate · 45–65 = Hold/Watch · < 45 = Fade**
 
@@ -54,7 +54,7 @@ Then on github.com → **Settings → Pages → Source: Deploy from a branch →
 ```
 index.html             ← single page
 css/styles.css         ← all styles (light + dark, no framework)
-js/narratives.js       ← the 10-narrative universe + qualitative tiers + fallback snapshot
+js/narratives.js       ← the 21-narrative universe + qualitative tiers + fallback snapshot
 js/nsi.js              ← CoinGecko fetcher and NSI compute engine
 js/app.js              ← rendering and interactivity
 assets/favicon.svg

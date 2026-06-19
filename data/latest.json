@@ -50,6 +50,61 @@
       "mcap_bn": 26.393222088,
       "vol_bn": 1.72194056,
       "pct_7d": 4.887214586341953
+    },
+    "gaming": {
+      "mcap_bn": 3.52,
+      "vol_bn": 0.42,
+      "pct_7d": 4.2
+    },
+    "socialfi": {
+      "mcap_bn": 2.11,
+      "vol_bn": 0.18,
+      "pct_7d": 6.5
+    },
+    "nft": {
+      "mcap_bn": 9.84,
+      "vol_bn": 0.55,
+      "pct_7d": -2.1
+    },
+    "zk": {
+      "mcap_bn": 2.83,
+      "vol_bn": 0.31,
+      "pct_7d": 3.0
+    },
+    "modular": {
+      "mcap_bn": 4.61,
+      "vol_bn": 0.4,
+      "pct_7d": 1.8
+    },
+    "bitcoin-ecosystem": {
+      "mcap_bn": 28.5,
+      "vol_bn": 1.95,
+      "pct_7d": 5.6
+    },
+    "oracle": {
+      "mcap_bn": 12.4,
+      "vol_bn": 0.88,
+      "pct_7d": 2.3
+    },
+    "privacy": {
+      "mcap_bn": 8.92,
+      "vol_bn": 0.36,
+      "pct_7d": 1.1
+    },
+    "dex-perps": {
+      "mcap_bn": 21.0,
+      "vol_bn": 3.1,
+      "pct_7d": 8.8
+    },
+    "cex-tokens": {
+      "mcap_bn": 110.0,
+      "vol_bn": 2.4,
+      "pct_7d": 0.9
+    },
+    "tokenized-gold": {
+      "mcap_bn": 2.34,
+      "vol_bn": 0.21,
+      "pct_7d": 1.5
     }
   }
 }

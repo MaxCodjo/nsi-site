@@ -121,6 +121,138 @@ window.NARRATIVES = [
     tickers: ["—"],
     thesis: "Bottom of every sub-indicator. 2024–2025 supercycle has decisively ended. Tactical longs only on specific event catalysts.",
     invalidation: "Solana memecoin daily volume sustains > $5B for a week AND BTC dominance breaks below 55%."
+  },
+  {
+    key: "gaming",
+    name: "Gaming / GameFi",
+    blurb: "On-chain games, game-token economies, and gaming-focused L1s/L2s.",
+    cgCategories: ["gaming"],
+    mindshareDelta: 0.8,
+    devTier: 1.0,
+    flowTier: 0.3,
+    tickers: ["IMX", "RON", "GALA", "BEAM", "PRIME", "PIXEL"],
+    thesis: "Ronin and Immutable lead on real players. The 2026 thesis is fewer-but-bigger titles with sustainable loops, not play-to-earn farms — watch for AAA launches that convert Web2 audiences.",
+    invalidation: "Top-3 gaming-chain DAUs decline 2 consecutive months, OR a flagship AAA title slips out of 2026."
+  },
+  {
+    key: "socialfi",
+    name: "SocialFi",
+    blurb: "Decentralized social graphs, creator monetization, on-chain communities.",
+    cgCategories: ["socialfi"],
+    mindshareDelta: 1.3,
+    devTier: 0.6,
+    flowTier: 0.3,
+    tickers: ["CYBER", "MASK", "DEGEN", "FRIEND", "TON"],
+    thesis: "Consumer-crypto's most reflexive corner. Telegram/TON distribution is the wildcard; pure SocialFi tokens still struggle to retain users beyond incentives.",
+    invalidation: "No app sustains > 1M on-chain WAU for a full quarter, OR top SocialFi tokens make fresh lows vs ETH."
+  },
+  {
+    key: "nft",
+    name: "NFTs & Collectibles",
+    blurb: "Blue-chip PFPs, ordinals, and marketplace tokens.",
+    cgCategories: ["non-fungible-tokens-nft"],
+    mindshareDelta: -1.0,
+    devTier: 0.3,
+    flowTier: 0.3,
+    tickers: ["APE", "BLUR", "PENGU", "ME", "ORDI"],
+    thesis: "Floors well off 2021 highs and liquidity is thin. Marketplace tokens (ME, BLUR) and ordinals are the only consistent flow magnets — largely a high-beta bet on a risk-on tape.",
+    invalidation: "Blue-chip ETH NFT floors break prior-cycle lows, OR marketplace volume < $50M/week for a month."
+  },
+  {
+    key: "zk",
+    name: "Zero-Knowledge",
+    blurb: "ZK rollups, proving infrastructure, and privacy-preserving compute.",
+    cgCategories: ["zero-knowledge-zk"],
+    mindshareDelta: 1.1,
+    devTier: 1.0,
+    flowTier: 0.3,
+    tickers: ["ZK", "STRK", "MINA", "ALEO", "SCR"],
+    thesis: "Strongest developer-activity score outside AI, but heavy token unlocks (ZK, STRK) cap price despite genuine tech progress. A builder narrative running ahead of its market reward.",
+    invalidation: "Proving-cost benchmarks stall for 2 quarters, OR ZK/STRK supply overhang triggers another leg down."
+  },
+  {
+    key: "modular",
+    name: "Modular & Data Availability",
+    blurb: "DA layers, settlement, and modular execution stacks.",
+    cgCategories: ["modular-blockchain", "data-availability"],
+    mindshareDelta: 0.5,
+    devTier: 1.0,
+    flowTier: 0.6,
+    tickers: ["TIA", "ALT", "DYM", "AVAIL", "MANTA"],
+    thesis: "Celestia anchored the DA thesis, but post-Pectra blob abundance compresses fee capture. The technology is real; monetization is the open question the market keeps pricing down.",
+    invalidation: "DA fee revenue stays negligible for 2 quarters, OR TIA breaks key support vs ETH."
+  },
+  {
+    key: "bitcoin-ecosystem",
+    name: "Bitcoin Ecosystem",
+    blurb: "BTC L2s, staking, ordinals/runes, and Bitcoin-native DeFi.",
+    cgCategories: ["bitcoin-ecosystem"],
+    mindshareDelta: 1.6,
+    devTier: 0.6,
+    flowTier: 1.0,
+    tickers: ["STX", "BABY", "SOLV", "CORE", "ORDI"],
+    thesis: "High BTC dominance plus ETF flows make BTC-native yield the institution-friendly story. Babylon staking and BTCfi TVL are the real signals, not L2 token prices.",
+    invalidation: "BTCfi aggregate TVL drops below $25B, OR Babylon staking inflows reverse for 2 months."
+  },
+  {
+    key: "oracle",
+    name: "Oracles & Data",
+    blurb: "Price feeds, proof-of-reserve, and off-chain data rails.",
+    cgCategories: ["oracle"],
+    mindshareDelta: 0.3,
+    devTier: 1.0,
+    flowTier: 0.6,
+    tickers: ["LINK", "PYTH", "BAND", "API3", "RED"],
+    thesis: "Picks-and-shovels infrastructure. LINK's CCIP and RWA proof-of-reserve tie it directly to the institutional narrative; Pyth scales on Solana throughput.",
+    invalidation: "LINK loses key support vs ETH, OR Pyth feed-adoption growth flattens."
+  },
+  {
+    key: "privacy",
+    name: "Privacy",
+    blurb: "Privacy coins and confidential-transaction protocols.",
+    cgCategories: ["privacy-coins"],
+    mindshareDelta: 0.2,
+    devTier: 0.6,
+    flowTier: 0.3,
+    tickers: ["XMR", "ZEC", "ZEN", "DASH", "ROSE"],
+    thesis: "A perennial regulatory overhang keeps listings fragile, but Monero's resilience plus renewed ZK-privacy interest give the sector a contrarian bid.",
+    invalidation: "Major-exchange delistings accelerate, OR XMR breaks multi-year support."
+  },
+  {
+    key: "dex-perps",
+    name: "DEXes & Perps",
+    blurb: "Spot AMMs and on-chain perpetual exchanges.",
+    cgCategories: ["decentralized-exchange"],
+    mindshareDelta: 1.4,
+    devTier: 1.0,
+    flowTier: 0.6,
+    tickers: ["HYPE", "UNI", "AERO", "JUP", "DYDX", "GMX"],
+    thesis: "Hyperliquid reset expectations for on-chain perp fee capture and token value-accrual. Real revenue plus buybacks make this the strongest DeFi sub-pocket.",
+    invalidation: "Hyperliquid weekly perp volume contracts 3 weeks, OR a major exploit hits a top venue."
+  },
+  {
+    key: "cex-tokens",
+    name: "Exchange Tokens",
+    blurb: "Centralized-exchange utility and fee tokens.",
+    cgCategories: ["centralized-exchange-token-cex"],
+    mindshareDelta: -0.3,
+    devTier: 0.6,
+    flowTier: 0.6,
+    tickers: ["BNB", "OKB", "BGB", "KCS", "CRO"],
+    thesis: "Cash-flow proxies for exchange volume. BNB and BGB track spot/derivatives share and are relatively defensive thanks to buyback-and-burn mechanics.",
+    invalidation: "Aggregate CEX spot volume declines 2 consecutive months, OR a top venue faces enforcement action."
+  },
+  {
+    key: "tokenized-gold",
+    name: "Tokenized Gold",
+    blurb: "On-chain gold and commodity-backed tokens.",
+    cgCategories: ["tokenized-gold"],
+    mindshareDelta: 0.9,
+    devTier: 0.3,
+    flowTier: 1.0,
+    tickers: ["PAXG", "XAUT", "KAU"],
+    thesis: "A macro hedge that bridges TradFi safe-haven demand on-chain. Flows turn sticky when real rates fall or crypto goes risk-off; low beta to alts.",
+    invalidation: "Gold spot breaks down hard, OR PAXG/XAUT supply contracts for 2 months."
   }
 ];
 
@@ -138,6 +270,17 @@ window.NSI_FALLBACK = {
     "defi":               { mcap_bn: 51.52, vol_bn: 3.57, pct_7d: 5.98 },
     "liquid-staking":     { mcap_bn: 1.15, vol_bn: 0.162, pct_7d: 1.96 },
     "layer-2":            { mcap_bn: 5.55, vol_bn: 0.591, pct_7d: -2.49 },
-    "memecoins":          { mcap_bn: 31.11, vol_bn: 2.25, pct_7d: -3.87 }
+    "memecoins":          { mcap_bn: 31.11, vol_bn: 2.25, pct_7d: -3.87 },
+    "gaming":             { mcap_bn: 3.52, vol_bn: 0.42, pct_7d: 4.2 },
+    "socialfi":           { mcap_bn: 2.11, vol_bn: 0.18, pct_7d: 6.5 },
+    "nft":                { mcap_bn: 9.84, vol_bn: 0.55, pct_7d: -2.1 },
+    "zk":                 { mcap_bn: 2.83, vol_bn: 0.31, pct_7d: 3.0 },
+    "modular":            { mcap_bn: 4.61, vol_bn: 0.40, pct_7d: 1.8 },
+    "bitcoin-ecosystem":  { mcap_bn: 28.5, vol_bn: 1.95, pct_7d: 5.6 },
+    "oracle":             { mcap_bn: 12.4, vol_bn: 0.88, pct_7d: 2.3 },
+    "privacy":            { mcap_bn: 8.92, vol_bn: 0.36, pct_7d: 1.1 },
+    "dex-perps":          { mcap_bn: 21.0, vol_bn: 3.10, pct_7d: 8.8 },
+    "cex-tokens":         { mcap_bn: 110.0, vol_bn: 2.40, pct_7d: 0.9 },
+    "tokenized-gold":     { mcap_bn: 2.34, vol_bn: 0.21, pct_7d: 1.5 }
   }
 };
