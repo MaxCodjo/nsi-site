@@ -1,0 +1,17 @@
+{
+  "name": "nsi-site",
+  "version": "1.0.0",
+  "description": "Narrative Strength Index — static site served via Express for Railway deployment.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "license": "MIT"
+}
