@@ -33,6 +33,7 @@ const NARRATIVES = [
 ];
 
 const CG = "https://api.coingecko.com/api/v3";
+const CG_KEY = process.env.COINGECKO_API_KEY || ""; // free CoinGecko Demo key — lifts the 429 rate limit on shared cloud IPs
 const REFRESH_MS = 15 * 60 * 1000; // refresh the server cache every 15 minutes
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -53,7 +54,9 @@ async function fetchCategory(catId, attempt = 0) {
   const url =
     `${CG}/coins/markets?vs_currency=usd&category=${catId}` +
     `&order=market_cap_desc&per_page=20&page=1&price_change_percentage=7d&sparkline=false`;
-  const res = await fetch(url, { headers: { "User-Agent": "nsi-site/1.0" } });
+  const headers = { "User-Agent": "nsi-site/1.0" };
+  if (CG_KEY) headers["x-cg-demo-api-key"] = CG_KEY;
+  const res = await fetch(url, { headers });
   if (res.status === 429 && attempt < 3) {
     await sleep(2000 * (attempt + 1));
     return fetchCategory(catId, attempt + 1);

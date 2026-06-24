@@ -9,12 +9,14 @@ This script mirrors the JS NSI logic in js/nsi.js so server and client agree.
 """
 
 import json
+import os
 import time
 import urllib.request
 from pathlib import Path
 from datetime import datetime, timezone
 
 CG = "https://api.coingecko.com/api/v3"
+CG_KEY = os.environ.get("COINGECKO_API_KEY", "")  # optional free CoinGecko Demo key
 
 NARRATIVES = [
     ("prediction-markets",  ["prediction-markets"]),
@@ -47,7 +49,10 @@ def fetch_category(cat_id, retries=6):
            f"&price_change_percentage=7d&sparkline=false")
     for attempt in range(retries):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "nsi-snapshot/1.0"})
+            hdrs = {"User-Agent": "nsi-snapshot/1.0"}
+            if CG_KEY:
+                hdrs["x-cg-demo-api-key"] = CG_KEY
+            req = urllib.request.Request(url, headers=hdrs)
             with urllib.request.urlopen(req, timeout=30) as r:
                 return json.loads(r.read())
         except Exception as e:
