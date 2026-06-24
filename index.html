@@ -61,9 +61,15 @@
 <!-- RANKING -->
 <section id="ranking" class="section">
   <div class="container">
-    <header class="section-header">
-      <h2>Live Ranking</h2>
-      <p>Click a row to expand the per-narrative breakdown.</p>
+    <header class="section-header ranking-header">
+      <div>
+        <h2>Live Ranking</h2>
+        <p>Click a row (or a point) to expand the per-narrative breakdown. Click a column header to sort.</p>
+      </div>
+      <div class="view-toggle" role="tablist" aria-label="View mode">
+        <button id="viewTable" class="vt-btn active" type="button" role="tab">▤ Table</button>
+        <button id="viewMatrix" class="vt-btn" type="button" role="tab">▦ Matrix</button>
+      </div>
     </header>
 
     <div id="loadingState" class="loading-state">
@@ -78,20 +84,22 @@
 
     <div id="rankingTable" class="ranking-table hidden">
       <div class="ranking-head">
-        <div class="col-rank">#</div>
-        <div class="col-name">Narrative</div>
-        <div class="col-mcap">Mcap</div>
-        <div class="col-7d">7d %</div>
-        <div class="col-sub">MCM</div>
-        <div class="col-sub">VLA</div>
-        <div class="col-sub">SMS</div>
-        <div class="col-sub">DEV</div>
-        <div class="col-sub">CFI</div>
-        <div class="col-nsi">NSI</div>
+        <div class="col-rank sortable" data-sort="NSI" title="Rank by NSI">#</div>
+        <div class="col-name sortable" data-sort="name" title="Sort alphabetically">Narrative</div>
+        <div class="col-mcap sortable" data-sort="mcap_bn" title="Market capitalization — summed across the narrative's top constituents">Mcap</div>
+        <div class="col-7d sortable" data-sort="pct_7d" title="Cap-weighted 7-day price change">7d %</div>
+        <div class="col-sub sortable" data-sort="MCM" title="Market-Cap Momentum — cap-weighted 7-day return (25% of NSI)">MCM</div>
+        <div class="col-sub sortable" data-sort="VLA" title="Volume / Liquidity Acceleration — 24h volume ÷ market cap (20%)">VLA</div>
+        <div class="col-sub sortable" data-sort="SMS" title="Social Mindshare Shift — Δ share-of-voice, tiered (20%)">SMS</div>
+        <div class="col-sub sortable" data-sort="DEV" title="Developer Activity — active devs &amp; commits, tiered (15%)">DEV</div>
+        <div class="col-sub sortable" data-sort="CFI" title="Capital Inflows — ETF + stablecoin + bridge flows, tiered (20%)">CFI</div>
+        <div class="col-nsi sortable" data-sort="NSI" title="Narrative Strength Index (0–100)">NSI</div>
         <div class="col-signal">Signal</div>
       </div>
       <div id="rankingBody"></div>
     </div>
+
+    <div id="matrixView" class="matrix-view hidden"></div>
   </div>
 </section>
 

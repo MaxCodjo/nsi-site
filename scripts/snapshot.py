@@ -84,10 +84,28 @@ def main():
         out["raw"][key] = aggregate(merged)
         print(f"  -> mcap=${out['raw'][key]['mcap_bn']:.2f}B "
               f"7d={out['raw'][key]['pct_7d']:+.1f}%")
-    target = Path(__file__).resolve().parent.parent / "data" / "latest.json"
-    target.parent.mkdir(exist_ok=True)
+    data_dir = Path(__file__).resolve().parent.parent / "data"
+    data_dir.mkdir(exist_ok=True)
+    target = data_dir / "latest.json"
     target.write_text(json.dumps(out, indent=2))
     print(f"\nwrote {target}")
+
+    # Append to a rolling history (last 120 snapshots) so the client can later
+    # compute NSI directional deltas (Δ7d / Δ30d). Raw is enough — NSI is derived
+    # from raw + the static tiers in js/narratives.js, so history is recomputable.
+    hist_path = data_dir / "history.json"
+    history = []
+    if hist_path.exists():
+        try:
+            history = json.loads(hist_path.read_text())
+            if not isinstance(history, list):
+                history = []
+        except Exception:
+            history = []
+    history.append({"capturedAt": out["capturedAt"], "raw": out["raw"]})
+    history = history[-120:]
+    hist_path.write_text(json.dumps(history))
+    print(f"history now has {len(history)} snapshot(s) -> {hist_path}")
 
 
 if __name__ == "__main__":

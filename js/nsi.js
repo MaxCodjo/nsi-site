@@ -120,6 +120,15 @@ window.NSI = {
   loadFallback() {
     return { rawByKey: window.NSI_FALLBACK.raw, errors: [], cached: window.NSI_FALLBACK.capturedAt };
   },
+  // Load from our own server cache (Railway /api/nsi) — server-side fetched + cached
+  // every ~15 min, so no client ever hits CoinGecko and there are no rate-limit failures.
+  async loadServer(fresh = false) {
+    const res = await fetch("/api/nsi" + (fresh ? "?fresh=1" : ""), { cache: "no-store" });
+    if (!res.ok) throw new Error("server " + res.status);
+    const json = await res.json();
+    if (!json.raw || !Object.keys(json.raw).length) throw new Error("server: empty");
+    return { rawByKey: json.raw, errors: [], capturedAt: json.capturedAt, source: json.source || "live" };
+  },
   // Load a pre-built snapshot from data/latest.json (committed by the snapshot script).
   // Falls through to the hard-coded fallback if the file is missing.
   async loadSnapshot() {
